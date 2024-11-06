@@ -1,3 +1,4 @@
+import { Image } from "next/image";
 import Layout from "../../../components/admin/layout";
 import styles from "../../../styles/dashboard.module.scss";
 import User from "../../../models/User";
@@ -12,7 +13,7 @@ import { SlHandbag, SlEye } from "react-icons/sl";
 import { SiProducthunt } from "react-icons/si";
 import { GiTakeMyMoney } from "react-icons/gi";
 import Link from "next/link";
-export default function dashboard({ users, orders, products }) {
+export default function Dashboard({ users, orders, products }) {
   const { data: session } = useSession();
   return (
     <div>
@@ -93,15 +94,15 @@ export default function dashboard({ users, orders, products }) {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((order) => (
-                  <tr>
+                {orders.map((order, key) => (
+                  <tr key={key}>
                     <td>{order.user.name}</td>
                     <td>{order.total} $</td>
                     <td>
                       {order.isPaid ? (
-                        <img src="../../../images/verified.webp" alt="" />
+                        <Image src="../../../images/verified.webp" alt="" />
                       ) : (
-                        <img src="../../../images/unverified1.png" alt="" />
+                        <Image src="../../../images/unverified1.png" alt="" />
                       )}
                     </td>
                     <td>
@@ -140,11 +141,11 @@ export default function dashboard({ users, orders, products }) {
             </div>
             <table>
               <tbody>
-                {users.map((user) => (
-                  <tr>
+                {users.map((user, key) => (
+                  <tr key={key}>
                     <td className={styles.user}>
                       <div className={styles.user__img}>
-                        <img src={user.image} alt="" />
+                        <Image src={user.image} alt="" />
                       </div>
                       <td>
                         <h4>{user.name}</h4>

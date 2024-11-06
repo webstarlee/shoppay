@@ -29,7 +29,7 @@ const initialvalues = {
   error: "",
   login_error: "",
 };
-export default function signin({ providers, callbackUrl, csrfToken }) {
+export default function Signin({ providers, callbackUrl, csrfToken }) {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialvalues);
   const {
@@ -56,13 +56,13 @@ export default function signin({ providers, callbackUrl, csrfToken }) {
   });
   const registerValidation = Yup.object({
     name: Yup.string()
-      .required("What's your name ?")
+      .required("What&apos;s your name ?")
       .min(2, "First name must be between 2 and 16 characters.")
       .max(16, "First name must be between 2 and 16 characters.")
       .matches(/^[aA-zZ]/, "Numbers and special characters are not allowed."),
     email: Yup.string()
       .required(
-        "You'll need this when you log in and if you ever need to reset your password."
+        "You&apos;ll need this when you log in and if you ever need to reset your password."
       )
       .email("Enter a valid email address."),
     password: Yup.string()
@@ -70,7 +70,7 @@ export default function signin({ providers, callbackUrl, csrfToken }) {
         "Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &)."
       )
       .min(6, "Password must be atleast 6 characters.")
-      .max(36, "Password can't be more than 36 characters"),
+      .max(36, "Password can&apos;t be more than 36 characters"),
     conf_password: Yup.string()
       .required("Confirm your password.")
       .oneOf([Yup.ref("password")], "Passwords must match."),
@@ -131,7 +131,7 @@ export default function signin({ providers, callbackUrl, csrfToken }) {
               <BiLeftArrowAlt />
             </div>
             <span>
-              We'd be happy to join us ! <Link href="/">Go Store</Link>
+              We&apos;d be happy to join us ! <Link href="/">Go Store</Link>
             </span>
           </div>
           <div className={styles.login__form}>

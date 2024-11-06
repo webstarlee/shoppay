@@ -16,7 +16,7 @@ export default function CategoryFilter({ categories, subCategories }) {
       {showFilter && (
         <>
           {categories.map((category, index) => (
-            <Card category={category} subCategories={subCategories} />
+            <Card key={index} category={category} subCategories={subCategories} />
           ))}
         </>
       )}

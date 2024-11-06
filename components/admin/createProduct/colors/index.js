@@ -1,7 +1,6 @@
 import { ErrorMessage, useField } from "formik";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import { ColorExtractor } from "react-color-extractor";
 import { TbArrowUpRightCircle } from "react-icons/tb";
 export default function Colors({
   product,
@@ -61,9 +60,6 @@ export default function Colors({
       />
       <div className={styles.colors__infos}></div>
       <div className={toggle ? styles.toggle : ""}>
-        <ColorExtractor getColors={(colors) => setColors(colors)}>
-          <img src={colorImage} style={{ display: "none" }} />
-        </ColorExtractor>
         <div className={styles.wheel}>{renderSwatches()}</div>
       </div>
       {colors.length > 0 && (

@@ -20,7 +20,7 @@ import { useMediaQuery } from "react-responsive";
 import ProductsSwiper from "../components/productsSwiper";
 import Product from "../models/Product";
 import ProductCard from "../components/productCard";
-export default function home({ country, products }) {
+export default function Home({ country, products }) {
   console.log("products", products);
   const { data: session } = useSession();
   const isMedium = useMediaQuery({ query: "(max-width:850px)" });
@@ -73,14 +73,14 @@ export default function home({ country, products }) {
 export async function getServerSideProps() {
   db.connectDb();
   let products = await Product.find().sort({ createdAt: -1 }).lean();
-  let data = await axios
-    .get("https://api.ipregistry.co/?key=r208izz0q0icseks")
-    .then((res) => {
-      return res.data.location.country;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // let data = await axios
+  //   .get("https://api.ipregistry.co/?key=r208izz0q0icseks")
+  //   .then((res) => {
+  //     return res.data.location.country;
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
   return {
     props: {
       products: JSON.parse(JSON.stringify(products)),

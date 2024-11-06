@@ -15,7 +15,7 @@ export default function ColorsFilter({ colors }) {
       {show && (
         <div className={styles.filter__colors_wrap}>
           {colors.map((color, index) => (
-            <button style={{ background: `${color}` }}></button>
+            <button key={index} style={{ background: `${color}` }}></button>
           ))}
         </div>
       )}

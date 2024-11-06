@@ -6,12 +6,11 @@ import Category from "../../../../models/Category";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Image } from "next/image";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import SingularSelect from "../../../../components/selects/SingularSelect";
-import MultipleSelect from "../../../../components/selects/MultipleSelect";
 import AdminInput from "../../../../components/inputs/adminInput";
-import DialogModal from "../../../../components/dialogModal";
 import { useDispatch } from "react-redux";
 import { showDialog } from "../../../../store/DialogSlice";
 import Images from "../../../../components/admin/createProduct/images";
@@ -59,7 +58,7 @@ const initialState = {
   ],
   shippingFee: "",
 };
-export default function create({ parents, categories }) {
+export default function Create({ parents, categories }) {
   const [product, setProduct] = useState(initialState);
   const [subs, setSubs] = useState([]);
   const [colorImage, setColorImage] = useState("");
@@ -210,7 +209,7 @@ export default function create({ parents, categories }) {
             />
             <div className={styles.flex}>
               {product.color.image && (
-                <img
+                <Image
                   src={product.color.image}
                   className={styles.image_span}
                   alt=""
@@ -252,16 +251,6 @@ export default function create({ parents, categories }) {
               handleChange={handleChange}
               disabled={product.parent}
             />
-            {product.category && (
-              <MultipleSelect
-                value={product.subCategories}
-                data={subs}
-                header="Select SubCategories"
-                name="subCategories"
-                disabled={product.parent}
-                handleChange={handleChange}
-              />
-            )}
             <div className={styles.header}>Basic Infos</div>
             <AdminInput
               type="text"

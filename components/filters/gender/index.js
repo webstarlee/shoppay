@@ -16,7 +16,7 @@ export default function GenderFilter() {
       {show && (
         <div>
           {genders.map((gender, index) => (
-            <div className={styless.filter__sizes_wrap_size}>
+            <div key={index} className={styless.filter__sizes_wrap_size}>
               <input type="checkbox" name="style" id={gender} />
               <label htmlFor={gender}>{gender}</label>
             </div>

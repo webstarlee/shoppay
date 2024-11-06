@@ -13,7 +13,7 @@ import { useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 import ProductsSwiper from "../../components/productsSwiper";
-export default function product({ product, related }) {
+export default function SingleProduct({ product, related }) {
   const [activeImg, setActiveImg] = useState("");
   const country = {
     name: "Morocco",
@@ -29,8 +29,8 @@ export default function product({ product, related }) {
         <div className={styles.product__container}>
           <div className={styles.path}>
             Home / {product.category.name}
-            {product.subCategories.map((sub) => (
-              <span>/{sub.name}</span>
+            {product.subCategories.map((sub, i) => (
+              <span key={i}>/{sub.name}</span>
             ))}
           </div>
           <div className={styles.product__main}>
