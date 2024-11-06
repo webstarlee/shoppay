@@ -10,6 +10,8 @@ export const compareArrays = (array1, array2) => {
   return array2.every((object) => array1.has(neww(object)));
 };
 
+
+
 export const filterArray = (array, property) => {
   return array
     .filter((item) => item.name == property)
